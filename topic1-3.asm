@@ -12,3 +12,6 @@ main:
     li $v0, 4       #system call to print a string
     la $a0, input
     syscall
+
+    li $v0, 10      #system call for exiting the program
+    syscall

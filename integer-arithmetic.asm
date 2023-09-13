@@ -17,7 +17,9 @@ surfaceArea:    .word 0
 .ent main
 main:
 # -----
-# your program code goes here.
+lw $t0, aSide   #load variables into registers
+lw $t1, bSide
+lw $t2, cSide
 # -----
 #  Done, terminate program.
 li $v0, 10

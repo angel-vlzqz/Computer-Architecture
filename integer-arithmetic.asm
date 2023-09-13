@@ -1,8 +1,15 @@
-#  Name and general description of program
+#  This program exemplifies integer arithmetic
+#  To find volume and surface area of a prism
 # ----------------------------------------
 #  Data declarations go in this section.
 .data
-# program specific data declarations
+
+aSide:          .word 73    # define side lengths
+bSide:          .word 14
+cSide:          .word 16
+
+volume:         .word 0     # define initial volume, surfaceArea
+surfaceArea:    .word 0
 # ----------------------------------------
 #  Program code goes in this section.
 .text

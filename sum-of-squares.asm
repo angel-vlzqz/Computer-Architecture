@@ -2,14 +2,20 @@
 # ----------------------------------------
 
 .data
-
+n:              .word 10
+sumOfSquares:   .word 0
 # ----------------------------------------
 
 .text
 .globl main
-.ent main
 main:
+lw $t0, n               # load variables into registers
+li $t1, 1               # loop index (1 to n)
+li $t2, 0               # sum
 
+sumLoop:
+    mul $t3, $t1, $t1   # index^2 ??
+    add $t2, $t2, $t3
 
 # -----
 #  Done, terminate program.

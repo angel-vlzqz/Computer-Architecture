@@ -24,16 +24,9 @@ main:
         syscall         # call OS to await input
         s.s $f0, num    # store input in $f0 into num
 
-        li $v0, 4       # system call to print string
-        la $a0, newLine # load address to print string
-        syscall         # call OS to print
 
         li $v0, 4       # system call to print string
         la $a0, print   # load address to be print string
-        syscall         # call OS to print
-
-        li $v0, 4       # system call to print string
-        la $a0, newLine # load address to print string
         syscall         # call OS to print
 
         li $v0, 2       # system call to print float

@@ -3,7 +3,7 @@
 
 .data
 num:        .float 0.0
-read:       .asciiz "Enter a float (enter 0 to quit loop: "
+read:       .asciiz "Enter a float (enter 0 to quit loop): "
 print:      .asciiz "The number is: "
 newLine:    .asciiz "\n"
 goodBye:    .asciiz "Goodbye\n"
@@ -19,6 +19,10 @@ main:
         li $v0, 4       # system call to print string
         la $a0, read    # load address to be print spring
         syscall         # call OS to print
+
+        li $v0, 4       # system call to print string
+        syscall         # call OS to await input
+        s.s $f0, num    # store input in $f0 into num
 
 # -----
 #  Done, terminate program.

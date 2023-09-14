@@ -13,8 +13,12 @@ goodBye:    .asciiz "Goodbye\n"
 .text
 .globl main
 .ent main
-main:
 
+main:
+    loop:
+        li $v0, 4       # system call to print string
+        la $a0, read    # load address to be print spring
+        syscall         # call OS to print
 
 # -----
 #  Done, terminate program.

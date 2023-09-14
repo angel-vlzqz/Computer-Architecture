@@ -27,6 +27,10 @@ main:
         li $v0, 4       # system call to print string
         la $a0, print   # load address to be print spring
         syscall         # call OS to print
+
+        li $v0, 2       # system call to print float
+        l.s $f12, num   # load input into $f12 as float
+        syscall          # call OS to print
 # -----
 #  Done, terminate program.
 li $v0, 10

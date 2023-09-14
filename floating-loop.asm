@@ -20,7 +20,7 @@ main:
         la $a0, read    # load address to be print string
         syscall         # call OS to print
 
-        li $v0, 4       # system call to print string
+        li $v0, 6       # system call to read float
         syscall         # call OS to await input
         s.s $f0, num    # store input in $f0 into num
 

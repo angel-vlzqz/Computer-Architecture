@@ -48,16 +48,12 @@ main:
         la $a0, newLine # load address to print string
         syscall         # call OS to print
 
-        li $v0, 4       # system call to print string
-        la $a0, newLine # load address to print string
-        syscall         # call OS to print
-
         lw   $t0, num
         bnez $t0, loop
 
-        li $v0, 4       # system call to print string
-        la $a0, goodBye # load string into $a0 as an asciiz
-        syscall         # call OS to print
+    li $v0, 4       # system call to print string
+    la $a0, goodBye # load string into $a0 as an asciiz
+    syscall         # call OS to print
 
 # ----------------------------------------
 #  Done, terminate program.

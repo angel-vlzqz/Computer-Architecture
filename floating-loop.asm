@@ -2,8 +2,11 @@
 # ----------------------------------------
 
 .data
-input:      .word 0
-Goodbye:    .string "Goodbye"
+num:        .float 0.0
+read:       .asciiz "Enter a float (enter 0 to quit loop: "
+print:      .asciiz "The number is: "
+newLine:    .asciiz "\n"
+goodBye:    .asciiz "Goodbye\n"
 
 # ----------------------------------------
 

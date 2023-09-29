@@ -32,9 +32,9 @@ main:
     la $a0, text2   # load address
     syscall         # call OS to print
 
-    li $v0, 4       # system call to print string
-    la $a0, newLine # load address
-    syscall         # call OS to print
+    li $v0, 5       # system call to read integer
+    syscall         # call OS to await input
+    move $t0, $v0   # move input into $t0
 
 # ----------------------------------------
 #  Done, terminate program.

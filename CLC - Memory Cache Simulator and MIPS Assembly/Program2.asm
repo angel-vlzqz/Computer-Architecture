@@ -28,6 +28,10 @@ main:
     la $a0, newLine # load address
     syscall         # call OS to print
 
+    li $v0, 4       # system call to print string
+    la $a0, text2   # load address
+    syscall         # call OS to print
+
 # ----------------------------------------
 #  Done, terminate program.
 li $v0, 10

@@ -16,6 +16,9 @@ newLine: .asciiz "\n"
 .globl main
 .ent main
 main:
+    li $v0, 4       # system call to print string
+    la $a0, text1   # load address
+    syscall         # call OS to print
 
 
 # ----------------------------------------

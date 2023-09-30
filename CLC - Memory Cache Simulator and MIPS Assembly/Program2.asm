@@ -48,3 +48,7 @@ greaterThan:
     li $v0, 4       # system call to print string
     la $a0, text3   # load address
     syscall         # call OS to print
+
+    li $v0, 1       # system call to print string
+    la $a0, $t2   # load address
+    syscall         # call OS to print

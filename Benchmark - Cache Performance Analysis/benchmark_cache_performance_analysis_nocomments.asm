@@ -43,9 +43,9 @@
 	.globl	main
 main:
 	#----------------------------------------------------------------------
-	li	$v0, 4		
-	la	$a0, programDesc	
-	syscall				
+	li	$v0, 4				# load print code
+	la	$a0, programDesc	# load string into register
+	syscall					# system call to print
 	#----------------------------------------------------------------------
 	li	$v0, 4			
 	la	$a0, oWMissRateReq	

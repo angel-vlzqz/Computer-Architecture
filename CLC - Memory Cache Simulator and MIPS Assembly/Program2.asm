@@ -48,7 +48,6 @@ main:
     syscall # all done!
     .end main
 
-
 # ----------------------------------------
 
 greaterThan:
@@ -66,3 +65,5 @@ greaterThan:
     li $v0, 10
     syscall # all done!
     .end main
+
+# ----------------------------------------

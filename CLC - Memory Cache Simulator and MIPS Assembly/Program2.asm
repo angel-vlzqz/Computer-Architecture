@@ -29,19 +29,10 @@ main:
     syscall         # call OS to await input
     move $t1, $v0   # move input into $t0
 
-    li $v0, 4       # system call to print string
-    la $a0, text3   # load address
-    syscall         # call OS to print
-
     slt $t2, $t0, $t1           # set if less than
-    bne $t2, $zero, greaterThan # branch if $t0 is 0
-    beq $t2, $zero, lessThan    # branch if $t0 is 1
+    bne $t2, $zero, greaterThan # branch if $t0 is 1
+    beq $t2, $zero, lessThan    # branch if $t0 is 0
 
-# ----------------------------------------
-#  Done, terminate program.
-li $v0, 10
-syscall # all done!
-.end main
 
 # ----------------------------------------
 
@@ -56,7 +47,12 @@ greaterThan:
     move $a0, $t2   # load address
     syscall         # call OS to print
 
-greaterThan:
+    #  Done, terminate program.
+    li $v0, 10
+    syscall # all done!
+    .end main
+
+lessThan:
     move $t2, $t0   # move larger integer into $t2
 
     li $v0, 4       # system call to print string
@@ -66,3 +62,8 @@ greaterThan:
     li $v0, 1       # system call to print string
     move $a0, $t2   # load address
     syscall         # call OS to print
+
+    #  Done, terminate program.
+    li $v0, 10
+    syscall # all done!
+    .end main

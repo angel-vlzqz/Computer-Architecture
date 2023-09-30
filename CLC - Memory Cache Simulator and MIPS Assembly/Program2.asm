@@ -34,10 +34,17 @@ main:
     syscall         # call OS to print
 
     slt $t2, $t0, $t1           # set if less than
-    bnq $t2, $zero, greaterThan # branch if $t0 is greater than $t1 
+    bne $t2, $zero, greaterThan # branch if $t0 is greater than $t1 
 
 # ----------------------------------------
 #  Done, terminate program.
 li $v0, 10
 syscall # all done!
 .end main
+
+# ----------------------------------------
+
+greaterThan:
+    li $v0, 4       # system call to print string
+    la $a0, text3   # load address
+    syscall         # call OS to print

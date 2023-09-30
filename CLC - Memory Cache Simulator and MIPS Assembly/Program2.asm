@@ -1,13 +1,19 @@
-#  Prints the larger of two numbers specified
-#  at runtime by the user
-# ----------------------------------------
+#  Program2.asm
+#-------------------------------------------------
+#  Author: Angel Velazquez
+#  Creation date: 2023Sep30
+#-------------------------------------------------
+#  This simple program reads two integers
+#  specified at runtim by the user and
+#  prints the larger of the two integers
+#  using a branch statement
 
 .data
 text1:   .asciiz "Enter a number: "
 text2:   .asciiz "Enter another number: "
 text3:   .asciiz "The larger of the two numbers is: "
 
-# ----------------------------------------
+#-------------------------------------------------
 
 .text
 .globl main
@@ -48,7 +54,7 @@ main:
     syscall # all done!
     .end main
 
-# ----------------------------------------
+#-------------------------------------------------
 
 greaterThan:
     move $t2, $t1   # move larger integer into $t2
@@ -66,4 +72,4 @@ greaterThan:
     syscall # all done!
     .end main
 
-# ----------------------------------------
+#-------------------------------------------------

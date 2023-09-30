@@ -54,16 +54,16 @@ main:
 	li	$v0, 6				# load read float code
 	syscall				
 	#----------------------------------------------------------------------
-	s.s	$f0, oWordMissRate	
+	s.s	$f0, oWordMissRate	# load float
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, fWMissRateReq	
+	li	$v0, 4				# load print string code
+	la	$a0, fWMissRateReq	# loac string into register
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 6			
+	li	$v0, 6				# load read float code
 	syscall				
 	#----------------------------------------------------------------------
- 	s.s	$f0, fWordMissRate	
+ 	s.s	$f0, fWordMissRate	# load float
 	#----------------------------------------------------------------------
 	# perform the intended operation - multiply 
 	#  Miss_Penalty_ave = (Miss_Penalty_rate)(Miss_Penalty_Cycles)

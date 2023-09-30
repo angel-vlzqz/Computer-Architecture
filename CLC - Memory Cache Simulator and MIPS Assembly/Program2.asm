@@ -29,15 +29,11 @@ main:
     syscall         # call OS to await input
     move $t1, $v0   # move input into $t0
 
+                                # if statement
     slt $t2, $t0, $t1           # set if less than
     bne $t2, $zero, greaterThan # branch if $t0 is 1
-    beq $t2, $zero, lessThan    # branch if $t0 is 0
 
-
-# ----------------------------------------
-
-greaterThan:
-    move $t2, $t1   # move larger integer into $t2
+    move $t2, $t0   # move larger integer into $t2
 
     li $v0, 4       # system call to print string
     la $a0, text3   # load address
@@ -52,8 +48,11 @@ greaterThan:
     syscall # all done!
     .end main
 
-lessThan:
-    move $t2, $t0   # move larger integer into $t2
+
+# ----------------------------------------
+
+greaterThan:
+    move $t2, $t1   # move larger integer into $t2
 
     li $v0, 4       # system call to print string
     la $a0, text3   # load address

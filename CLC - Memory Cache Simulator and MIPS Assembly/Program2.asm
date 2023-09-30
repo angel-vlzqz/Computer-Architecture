@@ -21,7 +21,6 @@ main:
     syscall         # call OS to await input
     move $t0, $v0   # move input into $t0
 
-
     li $v0, 4       # system call to print string
     la $a0, text2   # load address
     syscall         # call OS to print
@@ -34,6 +33,8 @@ main:
     la $a0, text3   # load address
     syscall         # call OS to print
 
+    slt $t2, $t0, $t1           # set if less than
+    bnq $t2, $zero, greaterThan # branch if $t0 is greater than $t1 
 
 # ----------------------------------------
 #  Done, terminate program.

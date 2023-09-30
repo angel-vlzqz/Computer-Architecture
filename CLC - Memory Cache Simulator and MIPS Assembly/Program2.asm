@@ -34,7 +34,8 @@ main:
     syscall         # call OS to print
 
     slt $t2, $t0, $t1           # set if less than
-    bne $t2, $zero, greaterThan # branch if $t0 is greater than $t1 
+    bne $t2, $zero, greaterThan # branch if $t0 is 0
+    beq $t2, $zero, lessThan    # branch if $t0 is 1
 
 # ----------------------------------------
 #  Done, terminate program.
@@ -46,6 +47,17 @@ syscall # all done!
 
 greaterThan:
     move $t2, $t1   # move larger integer into $t2
+
+    li $v0, 4       # system call to print string
+    la $a0, text3   # load address
+    syscall         # call OS to print
+
+    li $v0, 1       # system call to print string
+    move $a0, $t2   # load address
+    syscall         # call OS to print
+
+greaterThan:
+    move $t2, $t0   # move larger integer into $t2
 
     li $v0, 4       # system call to print string
     la $a0, text3   # load address

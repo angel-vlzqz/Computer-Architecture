@@ -43,15 +43,15 @@
 	.globl	main
 main:
 	#----------------------------------------------------------------------
-	li	$v0, 4				# load print code
+	li	$v0, 4				# load print string code
 	la	$a0, programDesc	# load string into register
-	syscall					# system call to print
+	syscall					
 	#----------------------------------------------------------------------
-	li	$v0, 4				# load print code
+	li	$v0, 4				# load print string code
 	la	$a0, oWMissRateReq	# load string into register
-	syscall					# system call to print
+	syscall					
 	#----------------------------------------------------------------------
-	li	$v0, 6			
+	li	$v0, 6				# load read float code
 	syscall				
 	#----------------------------------------------------------------------
 	s.s	$f0, oWordMissRate	

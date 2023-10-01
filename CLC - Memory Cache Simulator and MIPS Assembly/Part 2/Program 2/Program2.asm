@@ -4,7 +4,7 @@
 #  Creation date: 2023Sep30
 #-------------------------------------------------
 #  This simple program reads two integers
-#  specified at runtim by the user and
+#  specified at runtime by the user and
 #  prints the larger of the two integers
 #  using a branch statement
 

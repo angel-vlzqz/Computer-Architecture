@@ -3,7 +3,12 @@
 
 #This Zip File Includes:
 	- Program1Information.docx: This the documentation for the assignment
+
 	- Program1.asm: This asm file when run finds the sum of two integers
+		- To Run this file open it in QtSpim. Once QtSpim is open load and intialize
+		this file. Once that is complete run the program and open the console window.
+		Follow the prompts on the console window until the program is finished. 
+
 	- README.txt: (This file)
 
 #Usage:

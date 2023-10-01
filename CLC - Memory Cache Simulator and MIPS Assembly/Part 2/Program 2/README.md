@@ -28,8 +28,8 @@ console.
 If the console does not show up, press Window->Console
 
 The console will prompt you to enter an integer, do so and
-press the enter key to submit the integer. This process will
-repeat again
+press the enter key to submit the integer. You will be prompted
+to enter a second integer.
 
 After entering two integers, the program will output the greater
 of the two integers in the console in realtime

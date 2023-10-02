@@ -72,8 +72,8 @@ main:
 	#----------------------------------------------------------------------
 	l.s	$f0, oWordMissRate	
 	l.s	$f1, oWordMissCTime	
-	mul.s	$f2, $f0, $f1		
-	s.s	$f2, oWordMissAve	
+	mul.s	$f2, $f0, $f1	# multiply Miss+Penalty_rate and Miss_Penalty_Cycles	
+	s.s	$f2, oWordMissAve	# store product into oWordMissAve
 	#----------------------------------------------------------------------
  	li	$v0, 4			
 	la	$a0, oWordMissCalcOut	

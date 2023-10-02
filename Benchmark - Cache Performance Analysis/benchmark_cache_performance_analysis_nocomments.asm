@@ -105,37 +105,37 @@ main:
 	#----------------------------------------------------------------------
 	# Four Word (Non-Burst) Miss Penalty Calculations
 	#----------------------------------------------------------------------
-	l.s	$f0, fWordMissRate	
-	l.s	$f1, nbfWordMissCTime	
-	mul.s	$f2, $f0, $f1		
-	s.s	$f2, nbfWordMissAve	
+	l.s	$f0, fWordMissRate		# load float into $f0
+	l.s	$f1, nbfWordMissCTime	# load float into $f1
+	mul.s	$f2, $f0, $f1		# product of $f0 and $f1 into $f2
+	s.s	$f2, nbfWordMissAve		# store product in nbfWordMissAve
 	#----------------------------------------------------------------------
- 	li	$v0, 4			
-	la	$a0, nbfWordMissCalcOut	
+ 	li	$v0, 4					# load print string code
+	la	$a0, nbfWordMissCalcOut	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 4			
-	la	$a0, nbfWordMissRateOut	
+ 	li	$v0, 4					# load print string code
+	la	$a0, nbfWordMissRateOut	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, fWordMissRate	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, fWordMissRate		# load float into register
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, nbfWordMissCTimeOut  
+	li	$v0, 4					# load print string code
+	la	$a0, nbfWordMissCTimeOut# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, nbfWordMissCTime	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, nbfWordMissCTime	# load float into register
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, nbfWordMissAveOut	
+	li	$v0, 4					# load print string code
+	la	$a0, nbfWordMissAveOut	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, nbfWordMissAve	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, nbfWordMissAve	# load float into register
 	syscall				
 	#----------------------------------------------------------------------
 	# Four Word (Burst) Miss Penalty Calculations

@@ -57,7 +57,7 @@ main:
 	s.s	$f0, oWordMissRate	# load float
 	#----------------------------------------------------------------------
 	li	$v0, 4				# load print string code
-	la	$a0, fWMissRateReq	# loac string into register
+	la	$a0, fWMissRateReq	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
 	li	$v0, 6				# load read float code
@@ -79,28 +79,28 @@ main:
 	la	$a0, oWordMissCalcOut	
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 4			
-	la	$a0, oWordMissRateOut	
+ 	li	$v0, 4					# load print string code
+	la	$a0, oWordMissRateOut	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, oWordMissRate	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, oWordMissRate		# load float into register
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, oWordMissCTimeOut	
+	li	$v0, 4					# load print string code
+	la	$a0, oWordMissCTimeOut	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, oWordMissCTime	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, oWordMissCTime	# load float into register
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, oWordMissAveOut	
+	li	$v0, 4					# load print string code
+	la	$a0, oWordMissAveOut	# load string into register
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, oWordMissAve	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, oWordMissAve		# load float into register
 	syscall				
 	#----------------------------------------------------------------------
 	# Four Word (Non-Burst) Miss Penalty Calculations

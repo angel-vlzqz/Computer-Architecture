@@ -44,11 +44,11 @@
 main:
 	#----------------------------------------------------------------------
 	li	$v0, 4				# load print string code
-	la	$a0, programDesc	# load string into register
+	la	$a0, programDesc	# load string into $a0
 	syscall					
 	#----------------------------------------------------------------------
 	li	$v0, 4				# load print string code
-	la	$a0, oWMissRateReq	# load string into register
+	la	$a0, oWMissRateReq	# load string into $a0
 	syscall					
 	#----------------------------------------------------------------------
 	li	$v0, 6				# load read float code
@@ -57,7 +57,7 @@ main:
 	s.s	$f0, oWordMissRate	# load float
 	#----------------------------------------------------------------------
 	li	$v0, 4				# load print string code
-	la	$a0, fWMissRateReq	# load string into register
+	la	$a0, fWMissRateReq	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
 	li	$v0, 6				# load read float code
@@ -80,27 +80,27 @@ main:
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 4					# load print string code
-	la	$a0, oWordMissRateOut	# load string into register
+	la	$a0, oWordMissRateOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 2					# load print float code
-	l.s	$f12, oWordMissRate		# load float into register
+	l.s	$f12, oWordMissRate		# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
 	li	$v0, 4					# load print string code
-	la	$a0, oWordMissCTimeOut	# load string into register
+	la	$a0, oWordMissCTimeOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 2					# load print float code
-	l.s	$f12, oWordMissCTime	# load float into register
+	l.s	$f12, oWordMissCTime	# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
 	li	$v0, 4					# load print string code
-	la	$a0, oWordMissAveOut	# load string into register
+	la	$a0, oWordMissAveOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 2					# load print float code
-	l.s	$f12, oWordMissAve		# load float into register
+	l.s	$f12, oWordMissAve		# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
 	# Four Word (Non-Burst) Miss Penalty Calculations
@@ -111,73 +111,73 @@ main:
 	s.s	$f2, nbfWordMissAve		# store product in nbfWordMissAve
 	#----------------------------------------------------------------------
  	li	$v0, 4					# load print string code
-	la	$a0, nbfWordMissCalcOut	# load string into register
+	la	$a0, nbfWordMissCalcOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 4					# load print string code
-	la	$a0, nbfWordMissRateOut	# load string into register
+	la	$a0, nbfWordMissRateOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 2					# load print float code
-	l.s	$f12, fWordMissRate		# load float into register
+	l.s	$f12, fWordMissRate		# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
 	li	$v0, 4					# load print string code
-	la	$a0, nbfWordMissCTimeOut# load string into register
+	la	$a0, nbfWordMissCTimeOut# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 2					# load print float code
-	l.s	$f12, nbfWordMissCTime	# load float into register
+	l.s	$f12, nbfWordMissCTime	# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
 	li	$v0, 4					# load print string code
-	la	$a0, nbfWordMissAveOut	# load string into register
+	la	$a0, nbfWordMissAveOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
  	li	$v0, 2					# load print float code
-	l.s	$f12, nbfWordMissAve	# load float into register
+	l.s	$f12, nbfWordMissAve	# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
 	# Four Word (Burst) Miss Penalty Calculations
 	#----------------------------------------------------------------------
-	l.s	$f0, fWordMissRate	
-	l.s	$f1, bfWordMissCTime	
-	mul.s	$f2, $f0, $f1		
-	s.s	$f2, bfWordMissAve	
+	l.s	$f0, fWordMissRate		# load float into $f0
+	l.s	$f1, bfWordMissCTime	# load float into $f1
+	mul.s	$f2, $f0, $f1		# insert prod of $f0, $f1 into $f2
+	s.s	$f2, bfWordMissAve		# store prod into bfWordMissAve
 	#----------------------------------------------------------------------
- 	li	$v0, 4			
-	la	$a0, bfWordMissCalcOut	
+ 	li	$v0, 4					# load print string code
+	la	$a0, bfWordMissCalcOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 4			
-	la	$a0, bfWordMissRateOut	
+ 	li	$v0, 4					# load print string code
+	la	$a0, bfWordMissRateOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, fWordMissRate	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, fWordMissRate		# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, bfWordMissCTimeOut  
+	li	$v0, 4					# load print string code
+	la	$a0, bfWordMissCTimeOut # load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, bfWordMissCTime	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, bfWordMissCTime	# load float into $f12
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, bfWordMissAveOut	
+	li	$v0, 4					# load print string code
+	la	$a0, bfWordMissAveOut	# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
- 	li	$v0, 2			
-	l.s	$f12, bfWordMissAve	
+ 	li	$v0, 2					# load print float code
+	l.s	$f12, bfWordMissAve		# load float into $f12
 	syscall					
 	#----------------------------------------------------------------------
-	li	$v0, 4			
-	la	$a0, theEnd		
+	li	$v0, 4					# load print string code
+	la	$a0, theEnd				# load string into $a0
 	syscall				
 	#----------------------------------------------------------------------
-	li	$v0, 10			
+	li	$v0, 10					# terminate program
 	syscall				
 	#----------------------------------------------------------------------
 	.data

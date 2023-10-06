@@ -8,10 +8,6 @@
 #  is a palindrome or not
 #-------------------------------------------------
 
-.data
-
-#-------------------------------------------------
-
 .text
 .globl main
 .ent main
@@ -23,3 +19,13 @@ main:
 li $v0, 10
 syscall # all done!
 .end main
+#-------------------------------------------------
+
+.data
+    text1: .asciiz "This program will ask you for a word. 
+                    If your word is a palindrome, I will tell you. 
+                    If not, I will tell you."
+    text2: .asciiz "Enter a word"
+    text3: .asciiz " is a palindrome."
+    text4: .asciiz " is NOT a palindrome."
+    text5: .asciiz "Would you like to continue? Enter y/n: "

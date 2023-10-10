@@ -25,6 +25,7 @@ main:
     lw $a1, inputSize   # allot byst space for string
     move $t0, $a0       # move string into $t0
     syscall             # call OS to await input
+    # test
 
 #-------------------------------------------------
 #  Done, terminate program.

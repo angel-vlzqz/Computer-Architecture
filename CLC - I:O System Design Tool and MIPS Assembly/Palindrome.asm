@@ -34,7 +34,12 @@ main:
     la $a3, ($t0)       # B = S
 
     # *B = $t4
-    la $t4, 0($t0)
+    la $t4, ($t0)
+
+    li $v0, 4       # system call to print string
+    la $a0, 2($t4)  # load address
+    syscall         # call OS to print
+
     loop:
         beq $t4, $t0, test
         bne $t4, $t0, increment
@@ -49,11 +54,11 @@ main:
     test:
         # if A >= B
         sge $t1, $a2, $a3
-        beqz $t1, palindrome
+        bnez $t1, palindrome
 
         # if A <> 'B
         # nor??
-        bne $a2, !$a3, notPalindrome
+        bne $a2, $a3, notPalindrome
 
         add $a2, $a2, 1         # A++
         sub $a3, $a3, 1         # B--
@@ -83,8 +88,8 @@ syscall # all done!
     text1: .asciiz "This program will ask you for a word. 
 If your word is a palindrome, I will tell you. If not, I will tell you.\n"
     text2:      .asciiz "Enter a word: "
-    text3:      .asciiz " is a palindrome."
-    text4:      .asciiz " is NOT a palindrome."
+    text3:      .asciiz "is a palindrome."
+    text4:      .asciiz "is NOT a palindrome."
     text5:      .asciiz "Would you like to continue? Enter y/n: "
     input:      .space 80
     inputSize:  .space 80

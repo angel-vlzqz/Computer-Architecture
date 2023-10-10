@@ -20,6 +20,12 @@ main:
     la $a0, text2   # load address
     syscall         # call OS to print
 
+    li $v0, 8           # system call to read string
+    la $a0, input       # load byte space into address
+    lw $a1, inputSize   # allot byst space for string
+    move $t0, $a0       # move string into $t0
+    syscall             # call OS to await input
+
 #-------------------------------------------------
 #  Done, terminate program.
 li $v0, 10
@@ -30,7 +36,9 @@ syscall # all done!
 .data
     text1: .asciiz "This program will ask you for a word. 
 If your word is a palindrome, I will tell you. If not, I will tell you.\n"
-    text2: .asciiz "Enter a word: "
-    text3: .asciiz " is a palindrome."
-    text4: .asciiz " is NOT a palindrome."
-    text5: .asciiz "Would you like to continue? Enter y/n: "
+    text2:      .asciiz "Enter a word: "
+    text3:      .asciiz " is a palindrome."
+    text4:      .asciiz " is NOT a palindrome."
+    text5:      .asciiz "Would you like to continue? Enter y/n: "
+    input:      .space 81
+    inputSize:  .word  80

@@ -48,7 +48,7 @@ main:
 
     test:
         # if A >= B
-        slt $t1, $a2, $a3
+        sge $t1, $a2, $a3
         beqz $t1, palindrome
 
         # if A <> 'B

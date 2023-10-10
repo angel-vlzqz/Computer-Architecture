@@ -52,7 +52,8 @@ main:
         beqz $t1, palindrome
 
         # if A <> 'B
-        bne $a2, !$a3, palindrome
+        # nor??
+        bne $a2, !$a3, notPalindrome
 
         add $a2, $a2, 1         # A++
         sub $a3, $a3, 1         # B--
@@ -66,7 +67,10 @@ main:
         la $a0, text3   # load address
         syscall         # call OS to print
 
-        
+    notPalindrome:
+        li $v0, 10
+        syscall
+        .end main
    
 #-------------------------------------------------
 #  Done, terminate program.

@@ -78,6 +78,6 @@ syscall # all done!
     text1: .asciiz "This program will ask you for a word. 
 If your word is a palindrome, I will tell you. If not, I will tell you.\n"
     text2:      .asciiz "Enter a word: "
-    text3:      .asciiz "what you entered is a palindrome."
-    text4:      .asciiz "what you entered is NOT a palindrome."
+    text3:      .asciiz "the word you entered is a palindrome."
+    text4:      .asciiz "the word you entered is NOT a palindrome."
     input:      .space 1024

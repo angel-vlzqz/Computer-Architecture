@@ -45,19 +45,24 @@ main:
 
         addu $t1, $t1, 1            # A++
         subu $t2, $t2, 1            # B--
-        
+
         j test                      # jump to test
 
     palindrome:
         li $v0, 4       # system call to print string
-        la $a0, input   # load address
-        syscall         # call OS to print
-
-        li $v0, 4       # system call to print string
         la $a0, text3   # load address
         syscall         # call OS to print
 
+        li $v0, 10
+        syscall
+        .end main
+
+
     notPalindrome:
+        li $v0, 4       # system call to print string
+        la $a0, text4   # load address
+        syscall         # call OS to print
+
         li $v0, 10
         syscall
         .end main

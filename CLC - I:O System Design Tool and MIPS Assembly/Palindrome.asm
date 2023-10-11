@@ -23,29 +23,19 @@ main:
     li $v0, 8           # system call to read string
     la $a0, input       # load byte space into address
     la $a1, inputSize   # alloc byte space for string
-    move $t0, $a0       # move string into $t0
     syscall             # call OS to await input
 
-    # A = $a2
-    # S = $t0
-    la $a2, ($t0)       # A = S
-
-    # B = $a3
-    la $a3, ($t0)       # B = S
-
-    # *B = $t4
-    la $t4, ($t0)
+    la $t1, input   # load input string into $t1 and $t2
+    la $t2, input
 
     loop:
-        beq $t4, $t0, test
-        bne $t4, $t0, increment
-        setBack:
-            sub $t4, $t4, 2         # *B = *B - 2
-            bne $t4, $zero, test
-        increment:
-            add $t4, $t4, 1         # *B++
-        
-        j loop                      # return to loop
+        lb   $t3, ($t2)     # load first byte from string to $t3
+        beqz $t3, endLoop   # jump to end of loop
+        addu $t2, $t2, 1    # keep incrementing till reaches 0
+        j loop              # jump to loop
+
+    endLoop:
+        subu $t2, $t2, 2    # decrement to end of string
 
     test:
         # if A >= B

@@ -12,20 +12,20 @@
 .globl main
 .ent main
 main:
-    li $v0, 4       # system call to print string
-    la $a0, text1   # load address
-    syscall         # call OS to print
+    li $v0, 4           # system call to print string
+    la $a0, text1       # load address
+    syscall             # call OS to print
 
-    li $v0, 4       # system call to print string
-    la $a0, text2   # load address
-    syscall         # call OS to print
+    li $v0, 4           # system call to print string
+    la $a0, text2       # load address
+    syscall             # call OS to print
 
     li $v0, 8           # system call to read string
     la $a0, input       # load byte space into address
     la $a1, inputSize   # alloc byte space for string
     syscall             # call OS to await input
 
-    la $t1, input   # load input string into $t1 and $t2
+    la $t1, input       # load input string into $t1 and $t2
     la $t2, input
 
     loop:
@@ -38,16 +38,15 @@ main:
         subu $t2, $t2, 2    # decrement to end of string
 
     test:
-        # if A >= B
-        sge $t1, $a2, $a3
-        bnez $t1, palindrome
+        bge $t1, $t2, palindrome    # if A >= B, palindrome
+        lb  $t3, ($t1)              # load byte from A to $t3
+        lb  $t4, ($t4)              # load byte from B to $t4
+        bne $t3, $t4, notPalindrome # if A == B, notPalindrome
 
-        # if A <> 'B
-        # nor??
-        bne $a2, $a3, notPalindrome
-
-        add $a2, $a2, 1         # A++
-        sub $a3, $a3, 1         # B--
+        addu $t1, $t1, 1            # A++
+        subu $t2, $t2, 1            # B--
+        
+        j test                      # jump to test
 
     palindrome:
         li $v0, 4       # system call to print string

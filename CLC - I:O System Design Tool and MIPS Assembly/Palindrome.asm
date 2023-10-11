@@ -22,7 +22,7 @@ main:
 
     li $v0, 8           # system call to read string
     la $a0, input       # load byte space into address
-    la $a1, inputSize   # alloc byte space for string
+    la $a1, input       # alloc byte space for string
     syscall             # call OS to await input
 
     la $t1, input       # load input string into $t1 and $t2
@@ -32,7 +32,7 @@ main:
         lb   $t3, ($t2)     # load first byte from string to $t3
         beqz $t3, endLoop   # jump to end of loop
         addu $t2, $t2, 1    # keep incrementing till reaches 0
-        j loop              # jump to loop
+        b loop              # jump to loop
 
     endLoop:
         subu $t2, $t2, 2    # decrement to end of string
@@ -40,13 +40,13 @@ main:
     test:
         bge $t1, $t2, palindrome    # if A >= B, palindrome
         lb  $t3, ($t1)              # load byte from A to $t3
-        lb  $t4, ($t4)              # load byte from B to $t4
+        lb  $t4, ($t2)              # load byte from B to $t4
         bne $t3, $t4, notPalindrome # if A == B, notPalindrome
 
         addu $t1, $t1, 1            # A++
         subu $t2, $t2, 1            # B--
 
-        j test                      # jump to test
+        b test                      # jump to test
 
     palindrome:
         li $v0, 4       # system call to print string
@@ -80,5 +80,4 @@ If your word is a palindrome, I will tell you. If not, I will tell you.\n"
     text2:      .asciiz "Enter a word: "
     text3:      .asciiz "what you entered is a palindrome."
     text4:      .asciiz "what you entered is NOT a palindrome."
-    input:      .space 80
-    inputSize:  .space 80
+    input:      .space 1024

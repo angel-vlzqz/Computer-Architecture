@@ -78,9 +78,7 @@ syscall # all done!
     text1: .asciiz "This program will ask you for a word. 
 If your word is a palindrome, I will tell you. If not, I will tell you.\n"
     text2:      .asciiz "Enter a word: "
-    text3:      .asciiz "is a palindrome."
-    text4:      .asciiz "is NOT a palindrome."
-    text5:      .asciiz "Would you like to continue? Enter y/n: "
+    text3:      .asciiz "what you entered is a palindrome."
+    text4:      .asciiz "what you entered is NOT a palindrome."
     input:      .space 80
     inputSize:  .space 80
-    userBreak:  .space 10 # user defines break or not

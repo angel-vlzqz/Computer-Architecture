@@ -34,12 +34,13 @@ main:
     la $a3, ($t0)       # B = S
 
     # *B = $t4
-    la $t4, ($t0)
+    lb $t4, ($t0)
 
     li $v0, 4       # system call to print string
-    la $a0, 2($t4)  # load address
+    la $a0, ($t4)   # load address
     syscall         # call OS to print
 
+    
     loop:
         beq $t4, $t0, test
         bne $t4, $t0, increment
@@ -90,7 +91,5 @@ If your word is a palindrome, I will tell you. If not, I will tell you.\n"
     text2:      .asciiz "Enter a word: "
     text3:      .asciiz "is a palindrome."
     text4:      .asciiz "is NOT a palindrome."
-    text5:      .asciiz "Would you like to continue? Enter y/n: "
     input:      .space 80
     inputSize:  .space 80
-    userBreak:  .space 10 # user defines break or not

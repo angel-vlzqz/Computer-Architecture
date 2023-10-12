@@ -1,0 +1,10 @@
+#CLC – Memory Cache Simulator and MIPS Assembly
+#By Alec Utzerath and Angel Velazquez
+
+#This Zip File Includes:
+	- CLC-IOSystemsTool.docx: This the documentation for the assignment
+
+	- README.txt: (This file)
+
+#Usage:
+	-The following project assignment aims to assess and compare the cost and performance of various Input/Output (I/O) systems, shedding light on essential factors that determine the efficiency of these systems. In an era marked by ever-increasing data demands and rapid technological advancements, understanding the pivotal role of I/O systems is crucial. This assignment encompasses two distinct sections. The first part delves into performance evaluation, focusing on identifying the determinants of system performance, pinpointing potential bottlenecks, and proposing modifications to enhance Input/Output Operations Per Second (IOPS). The second part shifts the focus to cost analysis, emphasizing the economic implications of different configurations and exploring opportunities to balance costs between varying disk capacities. Ultimately, this project delves into the intersection of technology, economics, and performance, addressing not only theoretical considerations but also their real-world applicability, providing valuable insights into the multifaceted nature of I/O systems.

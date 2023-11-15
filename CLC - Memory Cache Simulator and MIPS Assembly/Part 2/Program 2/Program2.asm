@@ -19,9 +19,9 @@ text3:   .asciiz "The larger of the two numbers is: "
 .globl main
 .ent main
 main:
-    li $v0, 4       # system call to print string
-    la $a0, text1   # load address
-    syscall         # call OS to print
+li $v0, 4       # system call to print string
+la $a0, text1   # load address
+syscall         # call OS to print
 
     li $v0, 5       # system call to read integer
     syscall         # call OS to await input

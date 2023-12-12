@@ -10,50 +10,38 @@
 #  in it.
 #-------------------------------------------------
 
-# Assume arrays A and B are of equal length,
-# and their addresses are in registers 
-# $a0 and $a1, respectively.
-# The result will be stored in array A.
-
-# Entry point of the program
 main:
-    # Initialize loop counters
-    lw $t0, core0Counter
-    lw $t1, core1Counter
-    lw $t2, core2Counter
-    lw $t3, core3Counter
+    # Load the array addresses into registers
+    la $t0, array1
+    la $t1, array2
 
-    # Loop to perform parallel computation
-    parallelLoopEnter:
-        # Load elements from arrays A and B
-        lw $s0, 0($a0)  # A[i]
-        lw $s1, 0($a1)  # B[i]
+    # Load the length of the arrays into a register
+    lw $t2, length
 
-        # Perform the addition
-        add $s0, $s0, $s1  # A[i] = A[i] + B[i]
+    # Calculate the number of iterations (assuming arrays are of equal length)
+    # Divide length by 4 (number of cores)
+    srl $t3, $t2, 2  
 
-        # Store the result back in array A
-        sw $s0, 0($a0)
+    # Loop for parallel processing
+    loop_start:
+        # Load elements from arrays
+        lw $a0, 0($t0)  # array1
+        lw $a1, 0($t1)  # array2
 
-        # Increment loop counters
-        addi $a0, $a0, 4  # Move to the next element in array A
-        addi $a1, $a1, 4  # Move to the next element in array B
+        # Perform addition
+        add $a0, $a0, $a1  # Element-wise addition
 
-        # Increment counters based on the chunk size
-        addi $t0, $t0, 1
-        addi $t1, $t1, 1
-        addi $t2, $t2, 1
-        addi $t3, $t3, 1
+        # Store the result into array1
+        sw $a0, 0($t0)
 
-        # Check if the loop is complete for all cores
-        bne $t0, chunkSize, parallelLoopEnter
-        bne $t1, 2 * chunkSize, parallelLoopEnter
-        bne $t2, 3 * chunkSize, parallelLoopEnter
-        bne $t3, arrayLength, parallelLoopEnter
+        # Move to the next element in the arrays
+        # Move to the next element (4 words per core)
+        addi $t0, $t0, 16  
+        addi $t1, $t1, 16
 
-    # Exit the program
-    j $ra
-
+        # Check if we have completed the iterations
+        sub $t3, $t3, 1
+        bnez $t3, loop_start
 
 #-------------------------------------------------
 #  Done, terminate program.
@@ -63,14 +51,6 @@ syscall # all done!
 #-------------------------------------------------
 
 .data
-# Number of elements in the array
-arrayLength = 10
-
-# Calculate the chunk size for each core
-chunkSize = arrayLength / 4
-
-# Initialize loop counters for each core
-core0Counter: .word 0
-core1Counter: .word chunkSize
-core2Counter: .word 2 * chunkSize
-core3Counter: .word 3 * chunkSize
+    array1: .word 1, 2, 3, 4
+    array2: .word 5, 6, 7, 8
+    length: .word 4
